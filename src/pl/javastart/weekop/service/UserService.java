@@ -5,6 +5,7 @@ import pl.javastart.weekop.dao.UserDAO;
 import pl.javastart.weekop.model.User;
  
 public class UserService {
+
     public void addUser(String username, String email, String password) {
         User user = new User();
         user.setUsername(username);
@@ -29,4 +30,5 @@ public class UserService {
         User user = userDao.getUserByUsername(username);
         return user;
     }
+
 }
