@@ -13,13 +13,13 @@ import java.util.List;
 public class DiscoveryService {
 
     public void addDiscovery(String name, String description, String url, User user) {
-        Discovery discovery = createDiscovery(name, description, url, user);
+        Discovery discovery = createDiscoveryObject(name, description, url, user);
         DAOFactory factory = DAOFactory.getDAOFactory();
         DiscoveryDAO discoveryDAO = factory.getDiscoveryDAO();
         discoveryDAO.create(discovery);
     }
 
-    private Discovery createDiscovery(String name, String description, String url, User user) {
+    private Discovery createDiscoveryObject(String name, String description, String url, User user) {
         Discovery discovery = new Discovery();
         discovery.setName(name);
         discovery.setDescription(description);
@@ -28,6 +28,20 @@ public class DiscoveryService {
         discovery.setUser(copyUser);
         discovery.setTimestamp(new Timestamp(new Date().getTime()));
         return discovery;
+    }
+
+    public Discovery getDiscoveryById(long discoveryId) {
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        DiscoveryDAO discoveryDAO = factory.getDiscoveryDAO();
+        Discovery discovery = discoveryDAO.read(discoveryId);
+        return discovery;
+    }
+
+    public boolean updateDiscovery(Discovery discovery) {
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        DiscoveryDAO discoveryDAO = factory.getDiscoveryDAO();
+        boolean result = discoveryDAO.update(discovery);
+        return result;
     }
 
     public List<Discovery> getAllDiscoveries() {
