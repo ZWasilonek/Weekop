@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import pl.javastart.weekop.model.User;
 import pl.javastart.weekop.service.UserService;
  
-@WebFilter("/*")
+@WebFilter(filterName = "LoginFilter", urlPatterns = "/*")
 public class LoginFilter implements Filter {
  
     @Override
