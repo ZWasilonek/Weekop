@@ -30,11 +30,11 @@
               </a>
             </div>
             <div class="col col-md-11 col-sm-10">
-              <h3 class="centered"><a href="<c:out value="${discovery.url}" />"><c:out value="${discovery.name}" /></a></h3>
+              <h3 class="centered"><a href="<c:out value="${discovery.url}" />" target="_blank"><c:out value="${discovery.name}" /></a></h3>
               <h6>Dodane przez: <c:out value="${discovery.user.username}" />,
                 Dnia: <fmt:formatDate value="${discovery.timestamp}" pattern="dd/MM/YYYY"/></h6>
               <p><c:out value="${discovery.description}" /></p>
-              <a href="<c:out value="${discovery.url}" />" class="btn btn-default btn-xs">Przejdź do strony</a>
+              <a href="<c:out value="${discovery.url}" />" target="_blank" class="btn btn-default btn-xs">Przejdź do strony</a>
             </div>
           </div>
         </div>
