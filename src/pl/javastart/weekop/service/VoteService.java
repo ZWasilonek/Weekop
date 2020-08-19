@@ -27,7 +27,7 @@ public class VoteService {
         DAOFactory factory = DAOFactory.getDAOFactory();
         VoteDAO voteDAO = factory.getVoteDAO();
         Vote voteToUpdate = voteDAO.getVoteByUserIdDiscoveryId(userId, discoveryId);
-        if (voteToUpdate != null) {
+        if (voteToUpdate != null && !voteToUpdate.getVoteType().equals(voteType)) {
             voteToUpdate.setVoteType(voteType);
             voteDAO.update(voteToUpdate);
         }
