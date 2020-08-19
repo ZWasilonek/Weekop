@@ -43,48 +43,57 @@ public class VoteDAOImpl implements VoteDAO {
         paramMap.put("date", voteCopy.getDate());
         paramMap.put("type", voteCopy.getVoteType().toString());
         KeyHolder holder = new GeneratedKeyHolder();
-        SqlParameterSource parameterSource = new MapSqlParameterSource(paramMap);
-        int update = template.update(CREATE_VOTE, parameterSource, holder);
-        if (update > 0) {
+        SqlParameterSource paramSource = new MapSqlParameterSource(paramMap);
+        int update = template.update(CREATE_VOTE, paramSource, holder);
+        if(update > 0) {
             voteCopy.setId(holder.getKey().longValue());
         }
         return voteCopy;
     }
- 
+
     @Override
     public Vote read(Long primaryKey) {
-        SqlParameterSource parameterSource = new MapSqlParameterSource("vote_id", primaryKey);
-        Vote vote = template.queryForObject(READ_VOTE, parameterSource, new VoteRowMapper());
+        SqlParameterSource paramSource = new MapSqlParameterSource("vote_id", primaryKey);
+        Vote vote = template.queryForObject(READ_VOTE, paramSource, new VoteRowMapper());
         return vote;
     }
- 
+
     @Override
-    public boolean update(Vote updateObject) {
-        return false;
+    public boolean update(Vote vote) {
+        boolean result = false;
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("date", vote.getDate());
+        paramMap.put("type", vote.getVoteType().toString());
+        paramMap.put("vote_id", vote.getId());
+        SqlParameterSource paramSource = new MapSqlParameterSource(paramMap);
+        int update = template.update(UPDATE_VOTE, paramSource);
+        if(update > 0) {
+            result = true;
+        }
+        return result;
     }
- 
+
     @Override
     public boolean delete(Long key) {
         return false;
     }
- 
+
     @Override
     public List<Vote> getAll() {
         return null;
     }
- 
+
     @Override
     public Vote getVoteByUserIdDiscoveryId(long userId, long discoveryId) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("user_id", userId);
         paramMap.put("discovery_id", discoveryId);
-        SqlParameterSource parameterSource = new MapSqlParameterSource(paramMap);
+        SqlParameterSource paramSource = new MapSqlParameterSource(paramMap);
         Vote vote = null;
         try {
-            vote = template.queryForObject(READ_VOTE_BY_DISCOVERY_USE_IDS, parameterSource, new VoteRowMapper());
+            vote = template.queryForObject(READ_VOTE_BY_DISCOVERY_USE_IDS, paramSource, new VoteRowMapper());
         } catch(EmptyResultDataAccessException e) {
-            //TODO:
-            //vote not found
+            e.printStackTrace();
         }
         return vote;
     }
