@@ -26,12 +26,8 @@
         </div>
     </div>
 
-    <footer class="footer">
-      <div class="container">
-        <p class="navbar-text">Weekop - developed by <a href="http://javastart.pl">JavaStart.pl</a></p>
-      </div>
-    </footer>
-     
+    <%@ include file="fragment/footer.jspf" %>
+
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="../resources/js/bootstrap.js"></script>
