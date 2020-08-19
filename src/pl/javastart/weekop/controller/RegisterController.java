@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
  
 import pl.javastart.weekop.service.UserService;
  
-@WebServlet("/register")
+@WebServlet(name = "RegisterController", urlPatterns = "/register")
 public class RegisterController extends HttpServlet {
     private static final long serialVersionUID = 1L;
      
