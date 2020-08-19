@@ -125,3 +125,25 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO user VALUES
+  (null, 'admin', 'admin@gmail.com', true, '1ec0f2ffc6e70f5bae7139f383d44624'),
+  (null, 'ZosiaWasilonek', 'zosia.wasilonek@gmail.com', true, '5f4dcc3b5aa765d61d8327deb882cf99');
+
+INSERT INTO role VALUES('user', 'add new discovery');
+INSERT INTO role VALUES('admin', 'all privileges user_role');
+
+INSERT INTO user_role VALUES
+  ('admin', 'admin'),
+  ('user', 'ZosiaWasilonek');
+
+INSERT INTO discovery VALUES
+  (null, 'Weekop', 'Repozytorium z projektem - GitHub', 'https://github.com/ZWasilonek/Weekop', 2, NOW(), 1, 0),
+  (null, 'gatesnotes', 'Fundacja Bill\'a Gates\'a','https://www.gatesnotes.com/', 1, NOW(), 2, 0),
+  (null, 'Onet-Krychowiak', 'Grzegorz Krychowiak i jego paryski koszmar. Jeden z najgorszych transferów PSG', 'https://www.onet.pl/sport/onetsport/liga-mistrzow-rb-lipsk-psg-psg-to-czarny-punkt-w-karierze-grzegorza-krychowiaka-co/eqs93ms,d87b6cc4', 2, NOW(), 0, 1);
+
+INSERT INTO vote VALUES
+  (null, 1, 2, NOW(), 'VOTE_UP'),
+  (null, 2, 1, NOW(), 'VOTE_UP'),
+  (null, 3, 2, NOW(), 'VOTE_DOWN'),
+  (null, 2, 2, NOW(), 'VOTE_UP');
