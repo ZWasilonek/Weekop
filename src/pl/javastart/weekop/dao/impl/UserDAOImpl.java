@@ -39,12 +39,12 @@ public class UserDAOImpl implements UserDAO {
         int update = template.update(CREATE_USER, paramSource, holder);
         if(update > 0) {
             resultUser.setId((Long)holder.getKey());
-            setPrivigiles(resultUser);
+            setPrivileges(resultUser);
         }
         return resultUser;
     }
      
-    private void setPrivigiles(User user) {
+    private void setPrivileges(User user) {
         final String userRoleQuery = "INSERT INTO user_role(role_name, username) VALUES('user', :username)";
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(user);
         template.update(userRoleQuery, paramSource);
