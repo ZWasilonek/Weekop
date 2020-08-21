@@ -47,5 +47,4 @@ $RECYCLE.BIN/
 #spring
 .springBeans
 
-*context.xml
 out
