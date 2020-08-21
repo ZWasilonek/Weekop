@@ -4,6 +4,7 @@ Application written in Java EE technology based on the factory method pattern.
 The home page displays a list of websites added by users. As a logged in user, we can vote for this content,
 you can also add our own websites.
 
+![weekop](https://user-images.githubusercontent.com/59224048/90867695-12e7c480-e396-11ea-8f58-3c8402b03f7a.png)
 
 ## Technologies
 
