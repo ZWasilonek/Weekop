@@ -39,4 +39,17 @@ class VoteTest implements ModelTest {
                 () -> assertEquals(voteType, vote.getVoteType(), "Invalid VOTE_TYPE"));
     }
 
+    @Test
+    void givenConstructorVote_whenPropsEqual_thenCorrect() {
+        Vote constructorVote = new Vote(vote);
+        assertNotEquals(vote, constructorVote);
+
+        assertAll("Test vote props set",
+                () -> assertEquals(constructorVote.getId(), vote.getId(), "Invalid ID"),
+                () -> assertEquals(constructorVote.getDiscoveryId(), vote.getDiscoveryId(), "Invalid DISCOVERY_ID"),
+                () -> assertEquals(constructorVote.getUserId(), vote.getUserId(), "Invalid USER_ID"),
+                () -> assertEquals(constructorVote.getDate(), vote.getDate(), "Invalid DATE"),
+                () -> assertEquals(constructorVote.getVoteType(), vote.getVoteType(), "Invalid VOTE_TYPE"));
+    }
+
 }
