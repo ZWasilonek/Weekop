@@ -20,7 +20,7 @@ class UserTest implements ModelTest {
         String username = "testUserName";
         String email = "test@email.com";
         String password = "passwordTest";
-        boolean active = true;
+        boolean active = false;
 
         user = new User();
         user.setId(id);
@@ -40,13 +40,14 @@ class UserTest implements ModelTest {
     @Test
     void givenConstructorUser_whenPropsEqual_thenCorrect() {
         User constructorUser = new User(user);
-        assertNotEquals(user, constructorUser, "Users are equals");
+        assertEquals(user, constructorUser, "Users are equals");
 
         assertAll("Test constructor user props set",
                 () -> assertEquals(constructorUser.getId(), user.getId(), "Invalid ID"),
                 () -> assertEquals(constructorUser.getUsername(), user.getUsername(), "Invalid USERNAME"),
                 () -> assertEquals(constructorUser.getEmail(), user.getEmail(), "Invalid EMAIL"),
-                () -> assertEquals(constructorUser.getPassword(), user.getPassword(), "Invalid PASSWORD"));
+                () -> assertEquals(constructorUser.getPassword(), user.getPassword(), "Invalid PASSWORD"),
+                () -> assertEquals(constructorUser.isActive(), user.isActive(), "Invalid active"));
     }
 
 }
