@@ -42,7 +42,7 @@ class VoteTest implements ModelTest {
     @Test
     void givenConstructorVote_whenPropsEqual_thenCorrect() {
         Vote constructorVote = new Vote(vote);
-        assertNotEquals(vote, constructorVote);
+        assertEquals(vote, constructorVote);
 
         assertAll("Test vote props set",
                 () -> assertEquals(constructorVote.getId(), vote.getId(), "Invalid ID"),
