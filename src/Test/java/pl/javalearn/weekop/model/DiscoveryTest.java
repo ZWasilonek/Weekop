@@ -1,5 +1,6 @@
 package pl.javalearn.weekop.model;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -9,8 +10,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DiscoveryTest implements ModelTest {
 
+    static private Discovery discovery;
+
+    @BeforeAll
+    static void getInstance() {
+        discovery = new Discovery();
+    }
+
     @Test
-    void givenDiscovery_whenNotNull_thenCorrect() {
+    void givenDiscovery_whenPropsEqual_thenCorrect() {
         long id = 1;
         String name = "test name";
         String description = "test description";
@@ -20,7 +28,6 @@ class DiscoveryTest implements ModelTest {
         int upVote = 1;
         int downVote = -1;
 
-        Discovery discovery = new Discovery();
         discovery.setId(id);
         discovery.setName(name);
         discovery.setDescription(description);
@@ -39,6 +46,12 @@ class DiscoveryTest implements ModelTest {
                 () -> assertEquals(user, discovery.getUser(), "Invalid USER"),
                 () -> assertEquals(upVote, discovery.getUpVote(), "Invalid UP_VOTE"),
                 () -> assertEquals(downVote, discovery.getDownVote(), "Invalid DOWN_VOTE"));
+    }
+
+    @Test
+    void givenConstructorDiscovery_whenPropsEqual_thenCorrect() {
+        Discovery constructorDiscovery = new Discovery(discovery);
+        assertEquals(constructorDiscovery, discovery);
     }
 
 }
