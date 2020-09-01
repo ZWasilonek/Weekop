@@ -16,6 +16,7 @@ you can also add our own websites.
 * HTML
 * CSS
 * Bootstrap
+* JUnit 5
 
 
 ## How to start the application locally
