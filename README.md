@@ -72,5 +72,5 @@ and with ready data to be uploaded, among others 2 users whose accounts you can 
 
 ## Contact 
 
-zofiawasilonek@.gmail.com<br>
+zofiawasilonek@gmail.com<br>
 <a href="https://www.linkedin.com/in/zofia-wasilonek/">Linkedin</a>
